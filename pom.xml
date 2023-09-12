@@ -18,4 +18,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub - Vivek Raman - Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/Vivek-Raman/monolith-common</url>
+    </repository>
+  </distributionManagement>
 </project>
