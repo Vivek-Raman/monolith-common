@@ -28,6 +28,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @RestController
+@RequestMapping
 @Conditional(ModuleEnabledCondition.class)
 public @interface MonolithController {
   @AliasFor(annotation = RequestMapping.class, attribute = "value")
