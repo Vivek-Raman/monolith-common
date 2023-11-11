@@ -13,8 +13,8 @@ public class ModuleEnabledCondition implements Condition {
   @Override
   public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
     String moduleName = Optional
-        .ofNullable(metadata.getAnnotationAttributes(MonolithController.class.getName()))
-        .map(attributes -> attributes.get("moduleName"))
+        .of(metadata.getAnnotations().get(MonolithController.class))
+        .flatMap(annotation -> annotation.getValue("moduleName"))
         .map(Object::toString)
         .orElse(null);
 

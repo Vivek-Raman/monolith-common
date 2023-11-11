@@ -30,6 +30,6 @@ import java.lang.annotation.Target;
 @RestController
 @Conditional(ModuleEnabledCondition.class)
 public @interface MonolithController {
-  @AliasFor(annotation = RequestMapping.class, attribute = "path")
+  @AliasFor(annotation = RequestMapping.class, attribute = "value")
   String moduleName();
 }
