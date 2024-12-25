@@ -6,11 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.domain.Page;
-
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Builder
@@ -18,9 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Response<T> implements Serializable {
-  @Serial
-  private static final long serialVersionUID = 8480397197149093465L;
+public class Response<T> {
 
   private T data;
   private String error;
@@ -29,16 +22,8 @@ public class Response<T> implements Serializable {
     this.data = data;
   }
 
-  public static <T extends Serializable> Response<T> of(T data) {
+  public static <T> Response<T> of(T data) {
     return new Response<>(data);
-  }
-
-  public static <T extends Serializable> Response<List<T>> of(Page<T> data) {
-    return new ResponseList<>(data);
-  }
-
-  public static <T extends Serializable> Response<List<T>> of(List<T> data) {
-    return new ResponseList<>(data);
   }
 
   public static Response<Object> error(String error) {
