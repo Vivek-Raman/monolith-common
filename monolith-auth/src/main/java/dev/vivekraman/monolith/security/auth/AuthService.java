@@ -1,10 +1,12 @@
 package dev.vivekraman.monolith.security.auth;
 
-import java.util.Set;
+import java.util.List;
+
+import reactor.core.publisher.Mono;
 
 /**
  * Implement this service to make use of API key authentication.
  */
 public interface AuthService {
-  public Set<String> fetchAuthoritiesForApiKey(String apiKey);
+  public Mono<List<String>> fetchAuthoritiesForApiKey(String apiKey);
 }

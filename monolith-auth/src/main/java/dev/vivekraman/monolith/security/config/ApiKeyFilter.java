@@ -31,17 +31,20 @@ public class ApiKeyFilter implements WebFilter {
     if (CollectionUtils.isEmpty(apiKeys)) {
       return chain.filter(exchange);
     }
-    String apiKey = apiKeys.getFirst();
 
-    List<GrantedAuthority> authorities = new ArrayList<>();
-    if (!bypass || Objects.isNull(this.authService)) {
-      this.authService.fetchAuthoritiesForApiKey(apiKey).forEach(authority -> {
-        authorities.add(new SimpleGrantedAuthority(authority));
-      });
+    String apiKey = apiKeys.getFirst();
+    if (bypass || Objects.isNull(this.authService)) {
+      return chain.filter(exchange)
+      .contextWrite(ReactiveSecurityContextHolder.withAuthentication(
+        new ApiKeyToken(apiKey, null)));
     }
 
-    return chain.filter(exchange)
-      .contextWrite(ReactiveSecurityContextHolder.withAuthentication(
-        new ApiKeyToken(apiKey, authorities)));
+    return this.authService.fetchAuthoritiesForApiKey(apiKey)
+      .map(list -> list.stream()
+        .map(item -> (GrantedAuthority) new SimpleGrantedAuthority(item))
+        .toList())
+      .flatMap(authorities -> chain.filter(exchange)
+        .contextWrite(ReactiveSecurityContextHolder.withAuthentication(
+          new ApiKeyToken(apiKey, authorities))));
   }
 }
