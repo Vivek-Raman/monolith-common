@@ -9,7 +9,7 @@
     <version>2.1-rc1</version>
   </parent>
 
-  <artifactId>monolith-base</artifactId>
+  <artifactId>monolith-auth</artifactId>
 
   <properties>
     <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -19,18 +19,19 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+      <version>${springdoc.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
       <scope>provided</scope>
     </dependency>
   </dependencies>
