@@ -1,6 +1,5 @@
 package dev.vivekraman.monolith.security.config;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +11,7 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 
-import dev.vivekraman.monolith.security.auth.AuthService;
+import dev.vivekraman.monolith.security.auth.service.AuthService;
 import dev.vivekraman.monolith.security.model.ApiKeyToken;
 import reactor.core.publisher.Mono;
 

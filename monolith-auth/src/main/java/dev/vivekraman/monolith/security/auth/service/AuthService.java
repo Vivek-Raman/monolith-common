@@ -1,4 +1,4 @@
-package dev.vivekraman.monolith.security.auth;
+package dev.vivekraman.monolith.security.auth.service;
 
 import java.util.List;
 
