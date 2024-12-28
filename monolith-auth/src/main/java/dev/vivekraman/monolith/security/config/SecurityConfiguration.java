@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 
 @Configuration
 @EnableWebFluxSecurity
-@EnableR2dbcRepositories(basePackages = "dev.vivekraman.monolith.security.auth.model")
+@EnableR2dbcRepositories(basePackages = "dev.vivekraman.monolith.security.auth.repository")
 @EnableReactiveMethodSecurity(useAuthorizationManager = true)
 public class SecurityConfiguration {
   @Autowired(required = false)
